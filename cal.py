@@ -3,7 +3,7 @@ import csv
 import datetime
 import os
 
-YEAR = 2017
+YEAR = datetime.date.today().year
 MONTH = [
     'January', 'February', 'March', 'April', 'May', 'June', 'July',\
     'August', 'September', 'October', 'November', 'December'
