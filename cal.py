@@ -43,8 +43,7 @@ def event_db_write(event_dict):
         fieldnames = ['date', 'event_type', 'event_des']
         writer = csv.DictWriter(f, fieldnames)
 
-        dates = list(event_dict.keys())
-        dates.sort()
+        dates = sorted(event_dict.keys())
 
         writer.writeheader()
         for date in dates:
@@ -61,7 +60,7 @@ def event_db_read(event_dict):
         for row in reader:
             date_data = list(map(int, row['date'].split('-')))
             date = datetime.date(date_data[0], date_data[1], date_data[2])
-            
+
             if date in event_dict.keys():
                 event_dict[date].append((row['event_type'], row['event_des']))
             else:
@@ -99,8 +98,7 @@ def display_event(event_dict):
     '''
         Display available event/task sorted by its dates.
     '''
-    evDates = list(event_dict.keys())
-    evDates.sort()
+    evDates = sorted(event_dict.keys())
 
     if not evDates:
         print('-- NO TASK TO DISPLAY --')
